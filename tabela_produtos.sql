@@ -1,0 +1,1 @@
+UPDATE t_funcionaries SET nome = "Paulo" WHERE matricula = 1;

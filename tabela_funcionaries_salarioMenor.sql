@@ -1,0 +1,7 @@
+matricula,nome,usuario,salario,aniversario
+1,José,RA01,1000.00,1980-12-01
+2,Ricardo,RA01,1000.00,1980-12-01
+5,Lucas,LU01,1080.00,1999-12-12
+6,Ricardo,RA01,1000.00,1980-12-01
+9,Lucas,LU01,1080.00,1999-12-12
+10,Maria,MI01,900.00,1985-08-07
