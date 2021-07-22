@@ -1,0 +1,31 @@
+
+create database db_registro;
+
+create table tb_estudantes(
+matricula int not null auto_increment,
+nome varchar(20) not null,
+idade int,
+media decimal (10,2),
+telefone int,
+primary key (matricula)
+);
+
+INSERT INTO tb_estudantes (matricula, nome, idade, media, telefone) VALUES 
+(null, "Claudia", 10,8.06,45389966),
+(null, "Marcela",11, 9.05,45387985),
+(null, "Ana", 15,10.00,45381235),
+(null, "Bruno", 16,7.60,45387744),
+(null, "Rafaela", 9,3.45,45382594),
+(null, "Carlos", 8,7.45,45382595),
+(null, "Lucas", 14,8.66,45382596),
+(null, "Paulo", 9,0.00,45382597);
+
+delete from tb_estudantes where matricula = 5;
+
+select * from tb_estudantes;
+
+select * from tb_estudantes where media > 7;
+
+select * from tb_estudantes where media < 7;
+
+update tb_estudantes set media = 4.33 WHERE matricula = 7;
