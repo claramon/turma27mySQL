@@ -1,0 +1,60 @@
+create database db_pizzaria_legal;
+
+use db_pizzaria_legal;
+
+create table tb_categoria(
+id int not null auto_increment,
+tipo varchar (15),
+preco float,
+primary key (id)
+);
+
+create table tb_pizza(
+id int not null auto_increment,
+sabor varchar (15),
+tamanho varchar(15), 
+borda varchar (15),
+categoria_id int,
+primary key (id),
+foreign key (categoria_id) references tb_categoria (id)
+);
+
+select*from tb_categoria;
+
+INSERT INTO tb_categoria (tipo, preco) VALUES
+("doce",30.00),
+("salgada",70.00),
+("vegetariana",60.00),
+("fitness",50.00),
+("meio/meio",35.00);
+
+INSERT INTO tb_pizza (sabor, tamanho, borda) VALUES
+("chocolate","média","sem borda"),
+("frango","média","cheddar"),
+("brócolis", "grande","sem borda"),
+("atum", "pequena","sem borda"),
+("pepperoni","grande","catupiry"),
+("banana","pequena","chocolate"),
+("napolitana","grande","catupiry"),
+("mussarela","média","sem borda");
+
+--mostrar tabela
+select*from tb_pizza;
+
+--preço maior que 45,00
+select*from tb_categoria where preco > 45;
+
+--preço entre 29,00 e 60,00
+select*from tb_categoria where preco between 29 and 60;
+
+--sabores com a letra "c"
+select*from tb_pizza where sabor like "%c%";
+
+--inner join pizza e categoria
+select * from tb_pizza
+    inner join tb_categoria on tb_categoria.id = tb_pizza.categoria_id;
+
+--inner join com retorno de um tipo de pizza
+select * from tb_pizza
+    inner join tb_categoria on tb_categoria.id = tb_pizza.categoria_id
+    where tipo = "doce";
