@@ -1,0 +1,51 @@
+create database db_farmacia_do_bem; --criação base de dados
+
+create table tb_categoria( --criação tabela categoria
+id bigint not null auto_increment,
+quantidade int not null,
+tipo varchar (20) not null,
+primary key (id)
+);
+
+select * from tb_categoria;
+
+create table tb_produto( --criação tabela produto
+id bigint not null auto_increment,
+descricao varchar (20),
+preco float,
+utilidade varchar (20),
+departamento varchar (20),
+categoria_id bigint,
+primary key (id),
+foreign key (categoria_id) references tb_categoria (id)
+);
+
+select * from tb_produto;
+
+insert into tb_categoria (quantidade, tipo) values --inserir valores tabela categoria
+(15, "controlado"),
+(40, "digestivos"),
+(40, "não-controlados"),
+(33, "curativos"),
+(50, "higiene");
+
+insert into tb_produto (descricao, preco, utilidade, departamento) values -- inserir valores tabela produto
+("rivotril", 150.00, "medicamento", "anti-depressivo"),
+("eno", 3.50, "medicamento", "digestão"),
+("tylenol", 22.00, "medicamento", "dores"),
+("band-aid", 10.90, "atadura", "machucados"),
+("hidratante", 32.00, "anti-rugas", "auto-cuidado"),
+("shampoo aussie", 40.00, "cabelos", "auto-cuidado");
+
+select * from tb_produto where preco > 50.00; -- preços maiores de $50
+
+select * from tb_produto where preco between 3.00 and 60.00; -- preços entre $3 e $60
+
+select * from tb_produto where descricao like "%b%"; -- produtos com a letra "b" na descrição
+    
+select * from tb_produto
+    inner join tb_categoria on tb_categoria.id = tb_produto.categoria_id; --inner join duas tabelas
+
+select * from tb_produto
+    inner join tb_categoria on tb_categoria.id = tb_produto.categoria_id -- inner join com podutos de uma categoria específica
+    where tipo = "higiene";
