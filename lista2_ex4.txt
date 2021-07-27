@@ -1,0 +1,52 @@
+create database db_cidade_das_frutas;
+
+create table tb_categoria(
+id bigint not null auto_increment,
+tipo varchar (20) not null,
+quantidade int not null,
+primary key (id)
+);
+
+create table tb_produto(
+id bigint not null auto_increment,
+descricao varchar (20) not null,
+preco float,
+variedade varchar (20),
+semente boolean,
+categoria_id bigint,
+primary key (id),
+foreign key (categoria_id) references tb_categoria (id)
+);
+
+insert into tb_categoria (tipo, quantidade) values
+("cítricas",15),
+("semicítricas",22),
+("doces",5),
+("hiper-hídricas",6),
+("oleaginosas",10);
+
+insert into tb_produto (descricao, preco, variedade, semente) values
+("abacaxi",7.90,"havai",false),
+("manga",5.90,"palmer",true),
+("banana",6.90,"nanica",false),
+("melancia",4.90,"--",true),
+("abacate",8.90,"avocado", true),
+("laranja",4.90,"bahia",true),
+("maçã",6.90,"fuji",true);
+
+select * from tb_categoria;
+
+select * from tb_produto;
+
+select * from tb_produto where preco > 50.00;
+
+select * from tb_produto where preco between 3.00 and 60.00;
+
+select * from tb_produto where descricao like "%c%";
+
+select * from tb_produto
+    inner join tb_categoria on tb_categoria.id = tb_produto.categoria_id;
+    
+select * from tb_produto
+    inner join tb_categoria on tb_categoria.id = tb_produto.categoria_id
+    where tb_categoria.tipo = "oleaginosas";
